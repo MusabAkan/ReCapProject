@@ -1,11 +1,11 @@
 ﻿using Business.Concrete;
-using DataAccess.Concrete.InMemory;
+using DataAccess.Concrete.EntityFramework;
 
 internal class Program
 {
     private static void Main(string[] args)
     {
-        BrandManager manager = new (new InMemoryBrandDal());
+        CarManager manager = new (new EfCarRepository());
 
         manager.GetAll().ForEach(i =>
         {

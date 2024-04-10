@@ -1,30 +1,31 @@
 ﻿using DataAccess.Abstract;
 using Entities.Concrete;
+using System.Linq.Expressions;
 
 namespace DataAccess.Concrete.InMemory
 {
-    public class InMemoryBrandDal : IBrandDal
+    public class InMemoryBrandDal : ICarDal
     {
-        List<Brand> _brands;
+        List<Car> _brands;
 
         public InMemoryBrandDal()
         {
             _brands = new()
             {
-                new (){BrandId = 1,  Description = "Ferrari", ModelYear = 2002 , ColorId = Entities.Enums.Color.Red, DailyPrice = 10000000},
-                new (){BrandId = 2,  Description = "BMW", ModelYear = 1970 , ColorId = Entities.Enums.Color.Green, DailyPrice = 20000000},
-                new (){BrandId = 3,  Description = "FIAT", ModelYear = 2010 , ColorId = Entities.Enums.Color.Yellow, DailyPrice = 30000000},
-                new (){BrandId = 4,  Description = "Mercedes", ModelYear = 2005 , ColorId = Entities.Enums.Color.Blue, DailyPrice = 40000000}
+                //new (){BrandId = 1,  Description = "Ferrari", ModelYear = 2002 , ColorId = Entities.Enums.Color.Red, DailyPrice = 10000000},
+                //new (){BrandId = 2,  Description = "BMW", ModelYear = 1970 , ColorId = Entities.Enums.Color.Green, DailyPrice = 20000000},
+                //new (){BrandId = 3,  Description = "FIAT", ModelYear = 2010 , ColorId = Entities.Enums.Color.Yellow, DailyPrice = 30000000},
+                //new (){BrandId = 4,  Description = "Mercedes", ModelYear = 2005 , ColorId = Entities.Enums.Color.Blue, DailyPrice = 40000000}
             };
 
         }
 
-        public void Add(Brand brand)
+        public void Add(Car brand)
         {
             _brands.Add(brand);
         }
 
-        public void Delete(Brand brand)
+        public void Delete(Car brand)
         {
             var deletedEntity = _brands.SingleOrDefault(i => i.BrandId == brand.BrandId);
             if (deletedEntity != null)
@@ -32,17 +33,27 @@ namespace DataAccess.Concrete.InMemory
 
         }
 
-        public List<Brand> GetAll()
+        public Car Get(Expression<Func<Car, bool>> expression)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Car> GetAll()
         {
             return _brands;
         }
 
-        public Brand GetById(int brandId)
+        public Car GetById(int brandId)
         {
             return _brands.SingleOrDefault(i => i.BrandId == brandId);
         }
 
-        public void Update(Brand brand)
+        public List<Car> GetList(Expression<Func<Car, bool>> expression = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Car brand)
         {
             var updatedEntity = _brands.SingleOrDefault(i => i.BrandId == brand.BrandId);
 
