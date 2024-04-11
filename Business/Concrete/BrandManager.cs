@@ -11,13 +11,29 @@ namespace Business.Concrete
         {
             _dal = dal;
         }
-
         public void Add(Brand brand)
         {
-            if (brand.Name.Length > 2)
-                _dal.Add(brand);
-            else
-                throw new Exception("Araba ismi minimum 2 karakter olmalıdır");
+            _dal.Add(brand);
+        }
+
+        public void Delete(Brand brand)
+        {
+            _dal.Delete(brand);
+        }
+
+        public List<Brand> GetAll()
+        {
+            return _dal.GetList();
+        }
+
+        public Brand GetById(int brandId)
+        {
+            return _dal.Get(i => i.Id == brandId);
+        }
+
+        public void Update(Brand brand)
+        {
+            _dal.Update(brand);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Entities.Concrete;
+using Entities.DTOS;
 
 namespace Business.Abstract
 {
@@ -9,6 +10,7 @@ namespace Business.Abstract
         void Add(Car brand);
         void Update(Car brand);
         void Delete(Car brand);
+        List<CarDetailsDto> GetCarDetails();
         List<Car> GetCarsByBrandId(int brandId);
         List<Car> GetCarsByColorId(int colorId);
     }
