@@ -4,34 +4,34 @@ using DataAccess.Abstract;
 using Entities.Concrete;
 namespace Business.Concrete
 {
-    public class CustomerManager : ICustomerService
+    public class OtherCustomerManager : IOtherCustomerService
     {
-        private readonly ICustomerDal _dal;
-        public CustomerManager(ICustomerDal dal)
+        private readonly IOtherCustomerDal _dal;
+        public OtherCustomerManager(IOtherCustomerDal dal)
         {
             _dal = dal;
         }
-        public IResult Add(Customer Customer)
+        public IResult Add(OtherCustomer Customer)
         {
             _dal.Add(Customer);
             return new SuccessResult();
         }
-        public IResult Delete(Customer Customer)
+        public IResult Delete(OtherCustomer Customer)
         {
             _dal.Delete(Customer);
             return new SuccessResult();
         }
-        public IDataResult<List<Customer>> GetAll()
+        public IDataResult<List<OtherCustomer>> GetAll()
         {
             var data = _dal.GetList();
-            return new SuccessDataResult<List<Customer>>(data);
+            return new SuccessDataResult<List<OtherCustomer>>(data);
         }
-        public IDataResult<List<Customer>> GetByUserId(int userId)
+        public IDataResult<List<OtherCustomer>> GetByUserId(int userId)
         {
             var data = _dal.GetList(i => i.UserId == userId);
-            return new SuccessDataResult<List<Customer>>(data);
+            return new SuccessDataResult<List<OtherCustomer>>(data);
         }
-        public IResult Update(Customer Customer)
+        public IResult Update(OtherCustomer Customer)
         {
             _dal.Update(Customer);
             return new SuccessResult();

@@ -1,10 +1,9 @@
 ﻿using Core.DataAccess.EntityFramework;
 using DataAccess.Abstract;
 using Entities.Concrete;
-
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfCustomerRepository : EfEntityRepositoryBase<Customer, MasterContext>, ICustomerDal
+    public class EfRentalRepository : EfEntityRepositoryBase<Rental, MasterContext>, IRentalDal
     {
     }
 }
