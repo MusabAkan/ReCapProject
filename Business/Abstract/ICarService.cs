@@ -1,17 +1,18 @@
-﻿using Entities.Concrete;
+﻿using Core.Utilities.Results;
+using Entities.Concrete;
 using Entities.DTOS;
 
 namespace Business.Abstract
 {
     public interface ICarService
     {
-        Car GetById(int id);
-        List<Car> GetAll();
-        void Add(Car brand);
-        void Update(Car brand);
-        void Delete(Car brand);
-        List<CarDetailsDto> GetCarDetails();
-        List<Car> GetCarsByBrandId(int brandId);
-        List<Car> GetCarsByColorId(int colorId);
+        IDataResult<Car> GetById(int id);
+        IDataResult<List<Car>> GetAll();
+        IResult Add(Car brand);
+        IResult Update(Car brand);
+        IResult Delete(Car brand);
+        IDataResult<List<CarDetailsDto>> GetCarDetails();
+        IDataResult<List<Car>> GetCarsByBrandId(int brandId);
+        IDataResult<List<Car>> GetCarsByColorId(int colorId);
     }
 }

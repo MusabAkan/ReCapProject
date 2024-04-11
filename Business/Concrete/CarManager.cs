@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOS;
@@ -12,46 +14,51 @@ namespace Business.Concrete
         {
             _dal = dal;
         }
-        public void Add(Car brand)
+        public IResult Add(Car brand)
         {
             if (brand.DailyPrice > 0)
+            {
                 _dal.Add(brand);
+                return new SuccessResult();
+            }
             else
-                throw new Exception("Araba günlük fiyatı 0'dan büyük olmalıdır.");
+                return new ErrorResult(Messages.MustGreaterThanZero);
         }
-
-        public void Delete(Car brand)
+        public IResult Delete(Car brand)
         {
             _dal.Delete(brand);
+            return new SuccessResult();
         }
-        public List<Car> GetAll()
+        public IDataResult<List<Car>> GetAll()
         {
-            return _dal.GetList();
+            var data = _dal.GetList();
+            return new SuccessDataResult<List<Car>>(data);
+        }
+        public IDataResult<Car> GetById(int id)
+        {
+            var data = _dal.Get(i => i.Id == id);
+            return new SuccessDataResult<Car>(data);
+        }
+        public IDataResult<List<CarDetailsDto>> GetCarDetails()
+        {
+            var data = _dal.GetCarDetails();
+            return new SuccessDataResult<List<CarDetailsDto>>(data);
+        }
+        public IDataResult<List<Car>> GetCarsByBrandId(int brandId)
+        {
+            var data = _dal.GetList(i => i.BrandId == brandId);
+            return new SuccessDataResult<List<Car>>(data);
         }
 
-        public Car GetById(int id)
+        public IDataResult<List<Car>> GetCarsByColorId(int colorId)
         {
-            return _dal.Get(i => i.Id == id);
+            var data = _dal.GetList(i => i.ColorId == colorId);
+            return new SuccessDataResult<List<Car>>(data);
         }
-
-        public List<CarDetailsDto> GetCarDetails()
-        {
-            return _dal.GetCarDetails();
-        }
-
-        public List<Car> GetCarsByBrandId(int brandId)
-        {
-            return _dal.GetList(i => i.BrandId == brandId);
-        }
-
-        public List<Car> GetCarsByColorId(int colorId)
-        {
-            return _dal.GetList(i => i.ColorId == colorId);
-        }
-
-        public void Update(Car brand)
+        public IResult Update(Car brand)
         {
             _dal.Update(brand);
+            return new SuccessResult();
         }
     }
 }

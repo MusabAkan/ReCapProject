@@ -1,41 +1,40 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
-
 namespace Business.Concrete
 {
     public class ColorManager : IColorService
     {
         private readonly IColorDal _dal;
-
         public ColorManager(IColorDal dal)
         {
             _dal = dal;
         }
-
-        public void Add(Color color)
+        public IResult Add(Color color)
         {
             _dal.Add(color);
+            return new SuccessResult();
         }
-
-        public void Delete(Color color)
+        public IResult Delete(Color color)
         {
             _dal.Delete(color);
+            return new SuccessResult();
         }
-
-        public List<Color> GetAll()
+        public IDataResult<List<Color>> GetAll()
         {
-            return _dal.GetList();
+            var data = _dal.GetList();
+            return new SuccessDataResult<List<Color>>(data);
         }
-
-        public Color GetById(int colorId)
+        public IDataResult<Color> GetById(int colorId)
         {
-            return _dal.Get(i => i.Id == colorId);
+            var data = _dal.Get(i => i.Id == colorId);
+            return new SuccessDataResult<Color>(data);
         }
-
-        public void Update(Color color)
+        public IResult Update(Color color)
         {
             _dal.Update(color);
+            return new SuccessResult();
         }
     }
 }

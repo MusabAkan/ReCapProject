@@ -36,3 +36,8 @@ Console'da Tüm CRUD operasyonlarýnýzý Car, Brand, Model nesneleriniz için test e
 Arabalarý þu bilgiler olacak þekilde listeleyiniz. CarName, BrandName, ColorName, DailyPrice. (Ýpucu : IDto oluþturup 3 tabloya join yazýnýz)
 Kodlarýnýzý Github hesabýnýzda paylaþýp link veriniz.
 Baþkalarýnýn kodlarýný inceleyiniz. Beðenirseniz yýldýz veriniz.
+
+Ödev -5 
+Core katmanýnda Results yapýlandýrmasý yapýnýz.
+Daha önce geliþtirdiðiniz tüm Business sýnýflarýný bu yapýya göre refactor (kodu iyileþtirme) edini
+
