@@ -53,3 +53,8 @@ Yeni müþteriler ekleyiniz.
 Arabayý kiralama imkanýný kodlayýnýz. Rental-->Add
 Arabanýn kiralanabilmesi için arabanýn teslim edilmesi gerekmektedir.
 
+Ödev -7
+
+Car Rental Projenize Autofac, FluentValidation ve AOP  desteði ekleyiniz.
+
+ 
