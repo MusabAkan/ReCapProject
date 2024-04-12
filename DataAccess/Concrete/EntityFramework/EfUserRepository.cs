@@ -3,7 +3,7 @@ using DataAccess.Abstract;
 using Entities.Concrete;
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfUserRepository : EfEntityRepositoryBase<User, MasterContext>, IUserDal
+    public class EfUserRepository : EfEntityRepositoryBase<User, RecapContext>, IUserDal
     {
     }
 }

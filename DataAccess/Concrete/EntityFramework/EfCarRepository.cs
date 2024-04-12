@@ -1,15 +1,15 @@
 ﻿using Core.DataAccess.EntityFramework;
 using DataAccess.Abstract;
 using Entities.Concrete;
-using Entities.DTOS;
+using Entities.DTOs;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfCarRepository : EfEntityRepositoryBase<Car, MasterContext>, ICarDal
+    public class EfCarRepository : EfEntityRepositoryBase<Car, RecapContext>, ICarDal
     {
         public List<CarDetailsDto> GetCarDetails()
         {
-            using (var context = new MasterContext())
+            using (var context = new RecapContext())
             {
                 var result = from cr in context.Cars
                              join b in context.Brands on cr.BrandId equals b.Id

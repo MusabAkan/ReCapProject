@@ -3,7 +3,7 @@ using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
-using Entities.DTOS;
+using Entities.DTOs;
 
 namespace Business.Concrete
 {

@@ -1,6 +1,6 @@
 ﻿using Core.Utilities.Results;
 using Entities.Concrete;
-using Entities.DTOS;
+using Entities.DTOs;
 
 namespace Business.Abstract
 {

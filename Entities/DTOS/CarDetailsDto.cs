@@ -1,5 +1,5 @@
 ﻿using Core.Entities;
-namespace Entities.DTOS
+namespace Entities.DTOs
 {
     public class CarDetailsDto : IDto
     {

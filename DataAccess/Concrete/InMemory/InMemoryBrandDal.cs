@@ -1,6 +1,6 @@
 ﻿using DataAccess.Abstract;
 using Entities.Concrete;
-using Entities.DTOS;
+using Entities.DTOs;
 using System.Linq.Expressions;
 
 namespace DataAccess.Concrete.InMemory
