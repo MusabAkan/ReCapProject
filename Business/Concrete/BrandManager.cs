@@ -11,6 +11,7 @@ namespace Business.Concrete
         {
             _dal = dal;
         }
+        []
         public IResult Add(Brand brand)
         {
             _dal.Add(brand);
