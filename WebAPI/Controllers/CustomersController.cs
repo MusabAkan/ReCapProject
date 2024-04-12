@@ -29,7 +29,7 @@ namespace WebAPI.Controllers
             else
                 return BadRequest(result);
         }
-        [HttpGet("add")]
+        [HttpPost("add")]
         public IActionResult Add(Customer customer)
         {
             var result = _customerService.Add(customer);
@@ -38,7 +38,7 @@ namespace WebAPI.Controllers
             else
                 return BadRequest(result);
         }
-        [HttpGet("update")]
+        [HttpPost("update")]
         public IActionResult Update(Customer customer)
         {
             var result = _customerService.Update(customer);
@@ -47,7 +47,7 @@ namespace WebAPI.Controllers
             else
                 return BadRequest(result);
         }
-        [HttpGet("delete")]
+        [HttpPost("delete")]
         public IActionResult Delete(Customer customer)
         {
             var result = _customerService.Update(customer);
