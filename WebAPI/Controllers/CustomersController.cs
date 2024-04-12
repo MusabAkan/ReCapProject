@@ -1,11 +1,14 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using WebAPI.Controllers.Base;
 
 namespace WebAPI.Controllers
 {
-    public class CustomersController : Controller
+
+    public class CustomersController : BaseController
     {
+
         private readonly ICustomerService _customerService;
         public CustomersController(ICustomerService customerService)
         {

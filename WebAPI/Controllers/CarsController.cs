@@ -1,10 +1,12 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using WebAPI.Controllers.Base;
 
 namespace WebAPI.Controllers
 {
-    public class CarsController : Controller
+   
+    public class CarsController : BaseController
     {
         private readonly ICarService _carService;
         public CarsController(ICarService carService)

@@ -1,10 +1,10 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
-
+using WebAPI.Controllers.Base;
 namespace WebAPI.Controllers
 {
-    public class UsersController : Controller
+    public class UsersController : BaseController
     {
         private readonly IUserService _userService;
         public UsersController(IUserService userService)

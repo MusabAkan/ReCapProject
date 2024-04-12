@@ -1,9 +1,10 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using WebAPI.Controllers.Base;
 namespace WebAPI.Controllers
 {
-    public class ColorsController : Controller
+    public class ColorsController : BaseController
     {
         private readonly IColorService _colorService;
         public ColorsController(IColorService colorService)

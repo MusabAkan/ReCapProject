@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
+    
     public class RentalsController : Controller
     {
         private readonly IRentalService _rentalService;
