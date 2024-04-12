@@ -2,6 +2,7 @@ using Business.Abstract;
 using Business.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +25,11 @@ builder.Services.AddScoped<IRentalService, RentalManager>();
 builder.Services.AddScoped<IRentalDal, EfRentalRepository>();
 builder.Services.AddScoped<IUserService, UserManager>();
 builder.Services.AddScoped<IUserDal, EfUserRepository>();
+
+builder.Services.AddDbContext<RecapContext>(options => {
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
 
 var app = builder.Build();
 
