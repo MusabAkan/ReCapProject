@@ -57,4 +57,16 @@ Arabanýn kiralanabilmesi için arabanýn teslim edilmesi gerekmektedir.
 
 Car Rental Projenize Autofac, FluentValidation ve AOP  desteði ekleyiniz.
 
+Ödev-8
+Artýk araþtýrma yapýp, yeni iþlemleri projeye ekleyebilmemiz gerekiyor.
+RentACar projenizde;
+CarImages (Araba Resimleri) tablosu oluþturunuz. (Id,CarId,ImagePath,Date) Bir arabanýn birden fazla resmi olabilir.
+Api üzerinden arabaya resim ekleyecek sistemi yazýnýz.
+Resimler projeniz içerisinde bir klasörde tutulacaktýr. Resimler yüklendiði isimle deðil, kendi vereceðiniz GUID ile dosyalanacaktýr.
+Resim silme, güncelleme yetenekleri ekleyiniz.
+Bir arabanýn en fazla 5 resmi olabilir.
+Resmin eklendiði tarih sistem tarafýndan atanacaktýr.
+Bir arabaya ait resimleri listeleme imkaný oluþturunuz. (Liste)
+Eðer bir arabaya ait resim yoksa, default bir resim gösteriniz. Bu resim þirket logonuz olabilir. (Tek elemanlý liste)
+Github linkinizi paylaþýnýz.
  

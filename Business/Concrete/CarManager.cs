@@ -1,5 +1,5 @@
 ﻿using Business.Abstract;
-using Business.Constants;
+using Core.Utilities.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -49,7 +49,6 @@ namespace Business.Concrete
             var data = _dal.GetList(i => i.BrandId == brandId);
             return new SuccessDataResult<List<Car>>(data);
         }
-
         public IDataResult<List<Car>> GetCarsByColorId(int colorId)
         {
             var data = _dal.GetList(i => i.ColorId == colorId);
