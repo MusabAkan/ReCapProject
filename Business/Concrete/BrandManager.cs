@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -11,7 +12,7 @@ namespace Business.Concrete
         {
             _dal = dal;
         }
-        
+        [SecuredOperation("admin,editor")]
         public IResult Add(Brand brand)
         {
             _dal.Add(brand);

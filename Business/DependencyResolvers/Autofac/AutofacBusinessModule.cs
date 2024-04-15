@@ -7,11 +7,14 @@ using Core.Utilities.Business;
 using Core.Utilities.Helpers;
 using Core.Utilities.Interceptors;
 using Core.Utilities.Results;
+using Core.Utilities.Security.JWT;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Http;
+using System.IdentityModel.Tokens.Jwt;
 
-namespace Business.DependencyResolvers.Autofac
+namespace Business.DependencyResolvers.Autofac  
 {
     public class AutofacBusinessModule : Module
     {
@@ -31,16 +34,23 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<EfCustomerRepository>().As<ICustomerDal>().SingleInstance();
 
             builder.RegisterType<RentalManager>().As<IRentalService>().SingleInstance();
-            builder.RegisterType<EfRentalRepository>().As<IRentalDal>().SingleInstance();
-
-            builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
-            builder.RegisterType<EfUserRepository>().As<IUserDal>().SingleInstance();
-
+            builder.RegisterType<EfRentalRepository>().As<IRentalDal>().SingleInstance();     
 
             builder.RegisterType<CarImageManager>().As<ICarImageService>().SingleInstance();
             builder.RegisterType<EfCarImageRepository>().As<ICarImageDal>().SingleInstance();
 
             builder.RegisterType<FileHelper>().As<IFileHelper>().SingleInstance();
+
+
+            builder.RegisterType<EfUserRepository>().As<IUserDal>().SingleInstance();
+            builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
+
+            builder.RegisterType<AuthManager>().As<IAuthService>().SingleInstance();
+
+            builder.RegisterType<AuthManager>().As<IAuthService>();
+            builder.RegisterType<JwtHelper>().As<ITokenHelper>();
+
+            builder.RegisterType<HttpContextAccessor>().As<IHttpContextAccessor>().SingleInstance();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
             builder.RegisterAssemblyTypes(assembly).

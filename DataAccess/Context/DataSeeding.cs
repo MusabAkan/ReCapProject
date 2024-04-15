@@ -17,11 +17,13 @@ namespace DataAccess.Context
 
             if (context.Users.Count() == default)
             {
-                context.AddRange(
-                    new User("Musab", "Akan", "musab.akan@hotmail.com", "1234"),
-                    new User("Merve", "Salim", "merve5264@gmail.com", "merveince"),
-                    new User("Salih Can", "Taşkıran", "salihreiss07@gmail.com", "salihsalihsalih")
-                    );
+                //context.AddRange(
+                //    new User("Musab", "Akan", "musab.akan@hotmail.com", "1234"),
+                //    new User("Merve", "Salim", "merve5264@gmail.com", "merveince"),
+                //    new User("Salih Can", "Taşkıran", "salihreiss07@gmail.com", "salihsalihsalih")
+                //    );
+
+                //Bıraya geliştir ha
                 context.SaveChanges();
             }
             if (context.Customers.Count() == default)
