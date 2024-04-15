@@ -61,6 +61,14 @@ namespace Business.Concrete
         }
         public IResult Uptade(CarImage carImage, IFormFile? file)
         {
+            var result = BusinessRules.Run(
+               CheckIsCar(carImage.CarId),
+               CheckCarHaveUpFivePictures(carImage.CarId)
+               );
+
+            if (result != null)
+                return result;
+
             var exists = _carImageDal.Get(i => i.Id == carImage.Id);
             if (exists != null)
             {
@@ -72,7 +80,7 @@ namespace Business.Concrete
                     if (!resultFile.Success)
                         return new ErrorResult(Messages.ImageNotUpload);
                 }
-                exists.Date = DateTime.Now; 
+                exists.Date = DateTime.Now;
                 _carImageDal.Update(exists);
                 return new SuccessResult(Messages.ImageUpdated);
             }
@@ -92,6 +100,9 @@ namespace Business.Concrete
                 return new SuccessDataResult<List<CarImage>>(data);
             return new ErrorDataResult<List<CarImage>>();
         }
+
+
+        #region BusinessRules 
         private IResult CheckIsCar(int carId)
         {
             var state = _carService.GetById(carId).Data is not null;
@@ -103,6 +114,19 @@ namespace Business.Concrete
             return state ? new SuccessResult() : new ErrorResult(Messages.MustCarFiveImage);
 
         }
+
+        #endregion
+
+
+
+
+
+
+
+
+
+
+
 
 
     }
