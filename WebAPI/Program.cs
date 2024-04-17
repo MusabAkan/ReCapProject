@@ -7,13 +7,13 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Core.Utilities.Security.JWT;
 using Microsoft.IdentityModel.Tokens;
 using Core.Utilities.Security.Encyption;
+using Core.DependencyResolvers;
+using Core.Utilities.IoC;
+using Core.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -21,6 +21,7 @@ builder.Services.AddDbContext<RecapContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
 var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -44,7 +45,10 @@ builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
         builder.RegisterModule(new AutofacBusinessModule());
     });
 
-
+builder.Services.AddDependencyResolvers(new ICoreModule[]
+           {
+                new CoreModule(),
+           });
 
 var app = builder.Build();
 
@@ -58,8 +62,11 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+app.UseAuthentication();
 
 app.MapControllers();
+
+app.ConfigureCustomExceptionMiddleware();
 
 DataSeeding.Seed(app);
 

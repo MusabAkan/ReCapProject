@@ -1,5 +1,8 @@
 ﻿using Business.Abstract;
 using Business.BusinessAspects.Autofac;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Logging;
+using Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -12,6 +15,9 @@ namespace Business.Concrete
         {
             _dal = dal;
         }
+
+        [LogAspect(typeof(FileLogger))]
+        [CacheAspect(duration: 10)]
         [SecuredOperation("admin,editor")]
         public IResult Add(Brand brand)
         {
